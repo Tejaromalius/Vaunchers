@@ -1,0 +1,68 @@
+{
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "author": {
+    "email": "tayefi.ilia@protonmail.com",
+    "name": "Tejaromalius"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "files": [
+    "src/**",
+    "assets/**",
+    "LICENSE.txt"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "vaunchers.addNewLauncher",
+        "title": "Vaunchers: Add New Launcher"
+      }
+    ]
+  },
+  "description": "Vaunchers is a collection of launchers for various applications.",
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
+    "@vscode/vsce": "^2.24.0"
+  },
+  "displayName": "Vaunchers",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "icon": "./assets/icon.png",
+  "keywords": [
+    "launchers",
+    "applications",
+    "configuration"
+  ],
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Tejaromalius/Vaunchers/blob/main/LICENSE"
+    }
+  ],
+  "main": "./src/extension.js",
+  "name": "vaunchers",
+  "os": [
+    "linux",
+    "win32",
+    "darwin"
+  ],
+  "publisher": "Tejaromalius",
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tejaromalius/Vaunchers.git"
+  },
+  "scripts": {
+    "test": "vscode-test"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "vsce": "^2.15.0"
+  }
+}
