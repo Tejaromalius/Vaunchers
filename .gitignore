@@ -1,5 +1,6 @@
 # files
 package-lock.json
+vaunchers-*.vsix
 
 # directories
 .vscode

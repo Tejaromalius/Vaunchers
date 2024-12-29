@@ -20,7 +20,7 @@ function _createtaskConfigFileIfNotExist(taskConfigPath) {
     if (!fs.existsSync(taskConfigPath)) {
       fs.writeFileSync(
         taskConfigPath,
-        JSON.stringify({ configurations: [], version: '0.2.0' }, null, 2),
+        JSON.stringify({ tasks: [], version: '2.0.0' }, null, 2),
       );
     }
   } catch (error) {
