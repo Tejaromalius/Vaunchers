@@ -3,7 +3,7 @@ const CONFIGURATIONS = {
     name: 'Debug: Angular w/ Firefox',
     type: 'firefox',
     request: 'launch',
-    preLaunchTask: 'npm: start',
+    preLaunchTask: 'Serve Angular',
     url: 'http://localhost:4200/',
   },
   'Debug: VS Code Extension': {

@@ -1,7 +1,9 @@
 const vscode = require('vscode');
-const { CONFIGURATIONS } = require('./configurations');
-const { updateLauncherConfigurations } = require('./launchConfigHandler');
-const { logger } = require('./logger');
+const { TASKS } = require('./configs/tasks');
+const { CONFIGURATIONS } = require('./configs/launch');
+const { updateTasks } = require('./handlers/tasksHandler');
+const { updateLauncher } = require('./handlers/launchersHandler');
+const { logger } = require('./utils/logger');
 
 async function addNewLauncher() {
   try {
@@ -19,19 +21,24 @@ async function addNewLauncher() {
       return;
     }
 
-    let newConfiguration = CONFIGURATIONS[selectedLauncher];
-    if (newConfiguration.name === 'Debug: .NET Core') {
-      newConfiguration.projectPath = await _getDotnetProjectPath();
+    let newLauncher = CONFIGURATIONS[selectedLauncher];
+    if (newLauncher.name === 'Debug: .NET Core') {
+      newLauncher.projectPath = await _getDotnetProjectPath();
 
-      if (!newConfiguration.projectPath) {
+      if (!newLauncher.projectPath) {
         logger.error(`No project file selected.`);
         vscode.window.showErrorMessage('No project file selected.');
         return;
       }
     }
 
-    const launchConfigPath = `${workspaceFolders[0].uri.path}/.vscode/launch.json`;
-    updateLauncherConfigurations(launchConfigPath, newConfiguration);
+    const launchersPath = `${workspaceFolders[0].uri.path}/.vscode/launch.json`;
+    updateLauncher(launchersPath, newLauncher);
+
+    if (newLauncher.name === 'Debug: Angular w/ Firefox') {
+      const tasksPath = `${workspaceFolders[0].uri.path}/.vscode/tasks.json`;
+      updateTasks(tasksPath, TASKS[newLauncher.name]);
+    }
   } catch (error) {
     logger.appendLine(`Error in addNewLauncher: ${error.message}`);
     vscode.window.showErrorMessage(

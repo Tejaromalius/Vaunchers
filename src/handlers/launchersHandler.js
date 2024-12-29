@@ -1,8 +1,8 @@
 const vscode = require('vscode');
 const fs = require('fs');
-const { logger } = require('./logger');
+const { logger } = require('../utils/logger');
 
-function updateLauncherConfigurations(launchConfigPath, newConfiguration) {
+function updateLauncher(launchConfigPath, newConfiguration) {
   let content;
   let launchConfig;
 
@@ -78,5 +78,5 @@ function _updateConfigurations(
 }
 
 module.exports = {
-  updateLauncherConfigurations,
+  updateLauncher,
 };
